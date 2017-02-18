@@ -4,6 +4,8 @@ namespace href\hrefBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use href\hrefBundle\Entity\Group;
+
 
 /**
  * @ORM\Entity
@@ -23,4 +25,15 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Group")
+     * @ORM\JoinTable(name="fos_user_user_group",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
+     */
+    protected $groups;
+    
+    
 }

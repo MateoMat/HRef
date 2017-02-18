@@ -12,6 +12,8 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: href\hrefBundle\Entity\User
+    group:
+        group_class: href\hrefBundle\Entity\Group
 services:
     fos_user.doctrine_registy:
         alias: doctrine
