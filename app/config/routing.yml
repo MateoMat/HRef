@@ -1,0 +1,5 @@
+href:
+    resource: "@hrefBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
