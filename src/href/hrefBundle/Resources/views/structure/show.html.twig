@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+
+{% block x %}
+    <h1>Structure</h1>
+    <div class="col-sm-2">
+    <table class="table table-stripped col-sm-2">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ structure.id }}</td>
+            </tr>
+            <tr>
+                <th>Symbol</th>
+                <td>{{ structure.symbol }}</td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <td>{{ structure.level }}</td>
+            </tr>
+            <tr>
+                <th>Superior_id</th>
+                <td>{{ structure.superiorid }}</td>
+            </tr>
+            <tr>
+                <th>Promoline</th>
+                <td>{{ structure.promoLine }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ structure.position }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('structure_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('structure_edit', { 'id': structure.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-primary">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+
+{% endblock %}
+
