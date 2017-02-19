@@ -36,4 +36,29 @@ class User extends BaseUser
     protected $groups;
     
     
+    
+    /**
+     * 
+     * @ORM\Column(type="string", length=100)
+     * 
+     */
+    protected $position;
+    
+    /**
+     * 
+     * @ORM\Column(type="integer")
+     *
+     */
+    protected $parent;
+    
+    /**
+     * 
+     * @ORM\Column(type="string")
+     * 
+     */
+    protected $promoLine;
+    
+    
+    
+    
 }
