@@ -1,48 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Structures list</h1>
-    <div class="col-sm-2">
-    <table class="table table-stripped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Symbol</th>
-                <th>Level</th>
-                <th>Superior_id</th>
-                <th>Promoline</th>
-                <th>Position</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for structure in structures %}
-            <tr>
-                <td><a href="{{ path('structure_show', { 'id': structure.id }) }}">{{ structure.id }}</a></td>
-                <td>{{ structure.symbol }}</td>
-                <td>{{ structure.level }}</td>
-                <td>{{ structure.superiorid }}</td>
-                <td>{{ structure.promoLine }}</td>
-                <td>{{ structure.position }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('structure_show', { 'id': structure.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('structure_edit', { 'id': structure.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('structure_new') }}">Create a new structure</a>
-        </li>
-    </ul>
+{% block body %}
+    <div class="container col-sm-12">
+        
+    <a href="{{ path('structure_new') }}" class="btn btn-primary" role="button">Add new record</a>
+    <br><br>    
+
+    <div class="col-sm-2">
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Symbol</th>
+                    <th>Level</th>
+                    <th>Superior_id</th>
+                    <th>Promoline</th>
+                    <th>Position</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for structure in structures %}
+                    <tr>
+                        <td><a href="{{ path('structure_show', { 'id': structure.id }) }}">{{ structure.id }}</a></td>
+                        <td>{{ structure.symbol }}</td>
+                        <td>{{ structure.level }}</td>
+                        <td>{{ structure.superiorid }}</td>
+                        <td>{{ structure.promoLine }}</td>
+                        <td>{{ structure.position }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('structure_show', { 'id': structure.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('structure_edit', { 'id': structure.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
     </div>
 {% endblock %}
+

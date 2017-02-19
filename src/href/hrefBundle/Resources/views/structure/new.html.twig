@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Structure creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    <div class="container col-sm-12">
+    <h1>Dodaj nowe stanowisko</h1>
+<div class="col-sm-4">
+    {{ form_start(form, {'attr': {'class': 'jumbotron'} }) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Create" />
     {{ form_end(form) }}
 
     <ul>
@@ -13,4 +14,6 @@
             <a href="{{ path('structure_index') }}">Back to the list</a>
         </li>
     </ul>
+</div>
+</div>
 {% endblock %}
