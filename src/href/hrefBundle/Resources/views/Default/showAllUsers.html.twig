@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class='container col-sm-12'>
+<h1>Lista wszystkich użytkowników:</h1>
+{% for user in users %}
+    Imię: {{ user.username|e }}<br>
+E-mail: {{ user.email|e }}
+    <hr>
+{% endfor %}
+    </div>
+
+{% endblock %}
+
+
