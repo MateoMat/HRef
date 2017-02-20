@@ -17,6 +17,16 @@
 </head>
 <body>
     {% block menu %}
+        <div>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+        {% endif %}
+    </div>
         <div class="jumbotron col-sm-12" style="padding:20px">
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
@@ -34,7 +44,18 @@
 
                             </ul>
                         </li>
-                        <li><a href="/showAllUsers">Użytkownicy</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="/">Użytkownicy
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/profile/show">Mój profil</a></li>
+                                <li><a href="/register">Dodaj użytkownika</a></li>
+                                <li><a href="/resetting/request">Resetuj</a></li>
+                                <li><a href="/group/list">Grupy</a></li>
+
+                            </ul>
+                        </li>
+                        
                         <li><a href="#">Wnioski</a></li>
                     </ul>
                 </div>
