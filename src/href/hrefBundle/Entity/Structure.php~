@@ -186,4 +186,28 @@ class Structure
     {
         return $this->promoLine;
     }
+
+    /**
+     * Set superiorId
+     *
+     * @param integer $superiorId
+     *
+     * @return Structure
+     */
+    public function setSuperiorId($superiorId)
+    {
+        $this->superior_id = $superiorId;
+
+        return $this;
+    }
+
+    /**
+     * Get superiorId
+     *
+     * @return integer
+     */
+    public function getSuperiorId()
+    {
+        return $this->superior_id;
+    }
 }
