@@ -6,7 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use href\hrefBundle\Entity\User;
 use href\hrefBundle\Repository;
+use href\hrefBundle\Entity\Structure;
 use ArrayAccess;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 class DefaultController extends Controller
 {
@@ -18,8 +21,13 @@ class DefaultController extends Controller
         
         $repository = $this->getDoctrine()->getRepository('hrefBundle:Structure');
         $structure = $repository->findAll();
+        $usersA=$structure->getUsers();
+        
+        
+        
         
         return $this->render('hrefBundle:Default:index.html.twig',array('structure'=>$structure));
+        
     }
     
     /**

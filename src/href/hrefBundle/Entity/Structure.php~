@@ -3,6 +3,8 @@
 namespace href\hrefBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Structure
@@ -10,8 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="structure")
  * @ORM\Entity(repositoryClass="href\hrefBundle\Repository\StructureRepository")
  */
-class Structure
-{
+class Structure {
+
     /**
      * @var int
      *
@@ -34,14 +36,14 @@ class Structure
      * @ORM\Column(name="level", type="integer")
      */
     private $level;
-    
+
     /**
      * @var int
      *
      * @ORM\Column(name="superior_id", type="integer")
      */
     private $superior_id;
-    
+
     /**
      * @var int
      *
@@ -56,14 +58,24 @@ class Structure
      */
     private $position;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="userId", type="integer")
+     * @ORM\OneToMany(targetEntity="User", mappedBy="Structure")
+     */
+    private $userId;
+
+    public function __construct() {
+        $this->hrefUsers = new ArrayCollection();
+    }
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -74,8 +86,7 @@ class Structure
      *
      * @return Structure
      */
-    public function setSymbol($symbol)
-    {
+    public function setSymbol($symbol) {
         $this->symbol = $symbol;
 
         return $this;
@@ -86,8 +97,7 @@ class Structure
      *
      * @return string
      */
-    public function getSymbol()
-    {
+    public function getSymbol() {
         return $this->symbol;
     }
 
@@ -98,8 +108,7 @@ class Structure
      *
      * @return Structure
      */
-    public function setLevel($level)
-    {
+    public function setLevel($level) {
         $this->level = $level;
 
         return $this;
@@ -110,8 +119,7 @@ class Structure
      *
      * @return int
      */
-    public function getLevel()
-    {
+    public function getLevel() {
         return $this->level;
     }
 
@@ -122,8 +130,7 @@ class Structure
      *
      * @return Structure
      */
-    public function setPosition($position)
-    {
+    public function setPosition($position) {
         $this->position = $position;
 
         return $this;
@@ -134,8 +141,7 @@ class Structure
      *
      * @return string
      */
-    public function getPosition()
-    {
+    public function getPosition() {
         return $this->position;
     }
 
@@ -146,8 +152,7 @@ class Structure
      *
      * @return Structure
      */
-    public function setSuperior($superior)
-    {
+    public function setSuperior($superior) {
         $this->superior = $superior;
 
         return $this;
@@ -158,8 +163,7 @@ class Structure
      *
      * @return integer
      */
-    public function getSuperior()
-    {
+    public function getSuperior() {
         return $this->superior;
     }
 
@@ -170,8 +174,7 @@ class Structure
      *
      * @return Structure
      */
-    public function setPromoLine($promoLine)
-    {
+    public function setPromoLine($promoLine) {
         $this->promoLine = $promoLine;
 
         return $this;
@@ -182,8 +185,7 @@ class Structure
      *
      * @return integer
      */
-    public function getPromoLine()
-    {
+    public function getPromoLine() {
         return $this->promoLine;
     }
 
@@ -194,8 +196,7 @@ class Structure
      *
      * @return Structure
      */
-    public function setSuperiorId($superiorId)
-    {
+    public function setSuperiorId($superiorId) {
         $this->superior_id = $superiorId;
 
         return $this;
@@ -206,8 +207,32 @@ class Structure
      *
      * @return integer
      */
-    public function getSuperiorId()
-    {
+    public function getSuperiorId() {
         return $this->superior_id;
+    }
+
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     *
+     * @return Structure
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer
+     */
+    public function getUserId()
+    {
+        return $this->userId;
     }
 }
