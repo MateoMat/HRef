@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 
-{% block x %}
+{% block body %}
+    
     <h1>Structure</h1>
     <div class="col-sm-2">
     <table class="table table-stripped col-sm-2">
@@ -30,9 +31,10 @@
                 <th>Position</th>
                 <td>{{ structure.position }}</td>
             </tr>
+            
         </tbody>
     </table>
-
+            
     <ul>
         <li>
             <a href="{{ path('structure_index') }}">Back to the list</a>
@@ -40,11 +42,11 @@
         <li>
             <a href="{{ path('structure_edit', { 'id': structure.id }) }}">Edit</a>
         </li>
-        <li>
+        
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete" class="btn btn-primary">
             {{ form_end(delete_form) }}
-        </li>
+        
     </ul>
     </div>
 

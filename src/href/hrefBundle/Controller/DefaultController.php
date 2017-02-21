@@ -10,38 +10,36 @@ use href\hrefBundle\Entity\Structure;
 use ArrayAccess;
 use Doctrine\Common\Collections\ArrayCollection;
 
+class DefaultController extends Controller {
 
-class DefaultController extends Controller
-{
     /**
      * @Route("/")
      */
-    public function indexAction()
-    {
-        
+    public function indexAction() {
+
         $repository = $this->getDoctrine()->getRepository('hrefBundle:Structure');
         $structure = $repository->findAll();
-        $usersA=$structure->getUsers();
+//        $en=$this->getDoctrine()->getManager();
+//
+//        $query = $en->createQuery("SELECT s, u FROM hrefBundle:Structure s JOIN s.user u");
+//        $structure = $query->getResult();
         
-        
-        
-        
-        return $this->render('hrefBundle:Default:index.html.twig',array('structure'=>$structure));
-        
+
+
+
+
+        return $this->render('hrefBundle:Default:index.html.twig', array('structure' => $structure));
     }
-    
+
     /**
      * @Route("/showAllUsers",name="showAllUsers")
      */
-    public function showAllUsersAction()
-            {
-        
-        $userManager=$this->get('fos_user.user_manager');
-        $users=$userManager->findUsers();
-        
-        return $this->render('hrefBundle:Default:showAllUsers.html.twig',array('users'=>$users));
-        
-        
+    public function showAllUsersAction() {
+
+        $userManager = $this->get('fos_user.user_manager');
+        $users = $userManager->findUsers();
+
+        return $this->render('hrefBundle:Default:showAllUsers.html.twig', array('users' => $users));
     }
-    
+
 }

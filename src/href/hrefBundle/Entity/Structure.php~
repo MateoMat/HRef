@@ -5,6 +5,7 @@ namespace href\hrefBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use href\hrefBundle\Entity\User;
 
 /**
  * Structure
@@ -60,14 +61,13 @@ class Structure {
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="userId", type="integer")
-     * @ORM\OneToMany(targetEntity="User", mappedBy="Structure")
+     * @ORM\Column(name="user", type="integer")
+     * @ORM\OneToMany(targetEntity="User", mappedBy="structure")
      */
-    private $userId;
+    private $user;
 
     public function __construct() {
-        $this->hrefUsers = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
 
     /**
@@ -234,5 +234,53 @@ class Structure {
     public function getUserId()
     {
         return $this->userId;
+    }
+
+    /**
+     * Set users
+     *
+     * @param integer $users
+     *
+     * @return Structure
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+    /**
+     * Get users
+     *
+     * @return integer
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set user
+     *
+     * @param integer $user
+     *
+     * @return Structure
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return integer
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

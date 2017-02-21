@@ -10,4 +10,6 @@ namespace href\hrefBundle\Repository;
  */
 class StructureRepository extends \Doctrine\ORM\EntityRepository
 {
+    
+    
 }

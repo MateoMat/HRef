@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use href\hrefBundle\Entity\Group;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use href\hrefBundle\Entity\Structure;
 
 
 
@@ -18,8 +19,9 @@ class User extends BaseUser
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer", nullable=false)
+     * @var integer
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
 
@@ -49,12 +51,12 @@ class User extends BaseUser
     
     /**
      * 
-     * @ORM\Column(name="structureId", type="integer")
-     * @ORM\ManyToOne(targetEntity="Structure", inversedBy="User")
-     * @ORM\JoinColumn(name="structureId", referencedColumnName="id")
+     * @ORM\Column(name="structure")
+     * @ORM\ManyToOne(targetEntity="Structure", inversedBy="user")
+     * @ORM\JoinColumn(name="structure_id", referencedColumnName="id")
      * 
      */
-    protected $structureId;
+    protected $structure;
     
     /**
      * 
@@ -144,6 +146,30 @@ class User extends BaseUser
     public function getPromoLine()
     {
         return $this->promoLine;
+    }
+
+    /**
+     * Set structure
+     *
+     * @param integer $structureId
+     *
+     * @return User
+     */
+    public function setStructure($structure)
+    {
+        $this->structure = $structure;
+
+        return $this;
+    }
+
+    /**
+     * Get structure
+     *
+     * @return integer
+     */
+    public function getStructure()
+    {
+        return $this->structure;
     }
 
     /**
