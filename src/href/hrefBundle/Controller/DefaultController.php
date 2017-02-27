@@ -19,16 +19,13 @@ class DefaultController extends Controller {
 
         $repository = $this->getDoctrine()->getRepository('hrefBundle:Structure');
         $structure = $repository->findAll();
-//        $en=$this->getDoctrine()->getManager();
-//
-//        $query = $en->createQuery("SELECT s, u FROM hrefBundle:Structure s JOIN s.user u");
-//        $structure = $query->getResult();
-        
+        $repo=$this->getDoctrine()->getRepository('hrefBundle:User');
+        $user=$repo->findAll($structure);
 
 
 
 
-        return $this->render('hrefBundle:Default:index.html.twig', array('structure' => $structure));
+        return $this->render('hrefBundle:Default:index.html.twig', array('structure' => $structure,'user'=>$user));
     }
 
     /**

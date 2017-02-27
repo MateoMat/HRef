@@ -3,135 +3,161 @@
 {% block title %}HRef - strona główna{% endblock %}
 
 {% block body %}
-    
+
     <div class="container container-fluid">
-    <table class="table table-bordered">
-        <tr style="background-color: lightgray; color:white">
-            {% for i in structure %}
-                {% if i.level == 1 %}
-                    <td style="text-align: center;" colspan="4" ><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td>
-                {% endif %}
+        <table class="table table-bordered">
+            <tr style="background-color: lightgray; color:white">
+                {% for i in structure %}
+                    {% for j in user %}
+                        {% if i.level==1 and j.id == i.user %}            
+                            <td style="text-align: center;" colspan="4" ><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br> {{ j.id }} {{ j.username }}{{ j.email }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    {%endfor %}
+            </tr>
+            <tr>
+                <td style="text-align: center;" colspan="4">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+            </tr>
+            <tr style="background-color: lightgray;color:white">
+                {% for i in structure %}
+                    {% for j in user %}
+                        {% if i.level == 2 and j.id == i.user %}
+                            <td style="text-align: center;" colspan="4"><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br>
+                                {% if i.user != null %}                        
+                                    {{ j.id }} {{ j.username }} <br> {{ j.email }}</td>
+                                {% else %}
+                            <p>Wakat</p></td>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
             {%endfor %}
-        </tr>
-        <tr>
-            <td style="text-align: center;" colspan="4">
-            <span class="glyphicon glyphicon-arrow-down"></span>
-            </td>
-        </tr>
-        <tr style="background-color: lightgray;color:white">
-            {% for i in structure %}
-                {% if i.level == 2 %}
-                    <td style="text-align: center;" colspan="4"><a href="/structure/{{ i.id }}"><a>{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td>
-                {% endif %}
-            {%endfor %}
-        </tr>
-        <tr >
-            <td style="text-align: center;" colspan="4">
-            <span class="glyphicon glyphicon-arrow-down"></span>
-            </td>
-        </tr>
-        <tr style="background-color: lightgray;color:white">
-            {% for i in structure %}
+            </tr>
+            <tr >
+                <td style="text-align: center;" colspan="4">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+            </tr>
+
+
+
+            {% for i in structure %}                  
                 {% if i.level == 3 %}
-                    <td style="text-align: center;" colspan="4"><a href="/structure/{{ i.id }}"><a>{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td>
-                {% endif %}
-            {%endfor %}
-        </tr>
-        <tr>
-            <td style="text-align: center;" colspan="4">
-            <span class="glyphicon glyphicon-arrow-down"></span>
-            </td>
-        </tr>
-        <tr style="background-color: lightgray;color:blue">
-            <td style="text-align: center;" colspan="4">
-            Division
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">
-            <span class="glyphicon glyphicon-arrow-down"></span>
-            </td>
-            <td style="text-align: center;">
-            <span class="glyphicon glyphicon-arrow-down"></span>
-            </td>
-            <td style="text-align: center;">
-            <span class="glyphicon glyphicon-arrow-down"></span>
-            </td>
-            <td style="text-align: center;">
-            <span class="glyphicon glyphicon-arrow-down"></span>
-            </td>
-        </tr>
-        <tr style="background-color: lightgray;color:blue">
-            {% for i in structure %}
-                {% if i.level == 4 %}
-                    <td style="text-align: center;"> {{ i.promoLine }}</td>
-                {% endif %}
-            {%endfor %}
-        </tr>
-        <tr style="background-color: lightgray;color:white">
-            {% for i in structure %}
-                {% if i.level == 4 %}
-                    <td style="text-align: center;"> <a href="/structure/{{ i.id }}"><a>{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td>
-                {% endif %}
-            {%endfor %}
-        </tr>
-        </tr>
-        <tr>
-            <td style="text-align: center;">
-            <span class="glyphicon glyphicon-arrow-down"></span>
-            </td>
-            <td style="text-align: center;">
-            <span class="glyphicon glyphicon-arrow-down"></span>
-            </td>
-            <td style="text-align: center;">
-            <span class="glyphicon glyphicon-arrow-down"></span>
-            </td>
-            <td style="text-align: center;">
-            <span class="glyphicon glyphicon-arrow-down"></span>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">
-                <table class="table table-bordered">
-            {% for i in structure %}               
-                {% if i.level == 5 and i.superiorId == 4 %}
-                    <tr style="background-color: lightgray;color:white"><td><a href="/structure/{{ i.id }}"><a>{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td></tr>
-                {% endif %}               
-            {%endfor %}
-                </table>
-            </td>
-            <td style="text-align: center;">
-                <table class="table table-bordered">
-            {% for i in structure %}               
-                {% if i.level == 5 and i.superiorId == 5 %}
-                    <tr style="background-color: lightgray;color:white"><td><a href="/structure/{{ i.id }}"><a>{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td></tr>
-                {% endif %}              
-            {%endfor %}
-                </table>
-            </td>
-            <td style="text-align: center;">
-                <table class="table table-bordered">
-            {% for i in structure %}                
-                {% if i.level == 5 and i.superiorId == 6 %}
-                    <tr style="background-color: lightgray;color:white"><td><a href="/structure/{{ i.id }}"><a>{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td></tr>
-                {% endif %}                
-            {%endfor %}
-                </table>
-            </td>
-            <td style="text-align: center;">
-                <table class="table table-bordered">
-            {% for i in structure %}                
-                {% if i.level == 5 and i.superiorId == 7 %}
-                    <tr style="background-color: lightgray;color:white"><td><a href="/structure/{{ i.id }}"><a>{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td></tr>
-                {% endif %}                
-            {%endfor %}
-                </table>
-            </td>
-        </tr>
-        
-        
-        
-    </table>
+                    <tr style="background-color: lightgray;color:white"><td style="text-align: center;" colspan="4"><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br></td></tr>
+                        {% endif %}
+                    {% endfor %}
+
+            {% for j in structure %}
+                {% for i in user %}
+                    {% if j.level == 3 and i.structure == j.user and j.user == 0 %}                                                       
+                        <tr><td><p>Wakat1</p></td></tr>
+                    {% endif %}
+
+                    {% if j.level == 3 and i.structure == j.user and j.user != 0 %}                               
+                        <tr><td>{{ j.id }} {{ j.username }} <br> {{ j.email }}</td></tr>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+
+
+            <tr>
+                <td style="text-align: center;" colspan="4">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+            </tr>
+            <tr style="background-color: lightgray;color:blue">
+                <td style="text-align: center;" colspan="4">
+                    Division
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+                <td style="text-align: center;">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+                <td style="text-align: center;">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+                <td style="text-align: center;">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+            </tr>
+            <tr style="background-color: lightgray;color:blue">
+                {% for i in structure %}
+                    {% for j in user %}
+                        {% if i.level == 4 and j.id == i.user %}
+                            <td style="text-align: center;"> {{ i.promoLine }}</td>
+                        {% endif %}
+                    {%endfor %}
+                {%endfor %}
+            </tr>
+            <tr style="background-color: lightgray;color:white">
+                {% for i in structure %}
+                    {% if i.level == 4 %}
+                        <td style="text-align: center;"> <a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td>
+                    {% endif %}
+                {%endfor %}
+            </tr>
+            </tr>
+            <tr>
+                <td style="text-align: center;">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+                <td style="text-align: center;">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+                <td style="text-align: center;">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+                <td style="text-align: center;">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">
+                    <table class="table table-bordered">
+                        {% for i in structure %}               
+                            {% if i.level == 5 and i.superiorId == 4 %}
+                                <tr style="background-color: lightgray;color:white"><td><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td></tr>
+                                        {% endif %}               
+                                    {%endfor %}
+                    </table>
+                </td>
+                <td style="text-align: center;">
+                    <table class="table table-bordered">
+                        {% for i in structure %}               
+                            {% if i.level == 5 and i.superiorId == 5 %}
+                                <tr style="background-color: lightgray;color:white"><td><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td></tr>
+                                        {% endif %}              
+                                    {%endfor %}
+                    </table>
+                </td>
+                <td style="text-align: center;">
+                    <table class="table table-bordered">
+                        {% for i in structure %}                
+                            {% if i.level == 5 and i.superiorId == 6 %}
+                                <tr style="background-color: lightgray;color:white"><td><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td></tr>
+                                        {% endif %}                
+                                    {%endfor %}
+                    </table>
+                </td>
+                <td style="text-align: center;">
+                    <table class="table table-bordered">
+                        {% for i in structure %}                
+                            {% if i.level == 5 and i.superiorId == 7 %}
+                                <tr style="background-color: lightgray;color:white"><td><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a> {{ i.user }}</td></tr>
+                                        {% endif %}                
+                                    {%endfor %}
+                    </table>
+                </td>
+            </tr>
+
+
+
+        </table>
     </div>
 {% endblock %}
 
