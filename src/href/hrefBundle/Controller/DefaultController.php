@@ -21,10 +21,6 @@ class DefaultController extends Controller {
         $structure = $repository->findAll();
         $repo=$this->getDoctrine()->getRepository('hrefBundle:User');
         $user=$repo->findAll($structure);
-
-
-
-
         return $this->render('hrefBundle:Default:index.html.twig', array('structure' => $structure,'user'=>$user));
     }
 
