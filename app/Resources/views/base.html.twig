@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}HRef{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
@@ -14,6 +14,7 @@
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../../web/bundles/framework/css/body.css">
+    {% endblock %}
 </head>
 <body>
     {% block menu %}
@@ -50,7 +51,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/profile/show">Mój profil</a></li>
                                 <li><a href="/showAllUsers">Wszyscy użytkownicy</a></li>
-                                <li><a href="/register">Dodaj użytkownika</a></li>
+                                <li><a href="/user/new">Dodaj użytkownika</a></li>
                                 <li><a href="/resetting/request">Resetuj</a></li>
                                 <li><a href="/group/list">Grupy</a></li>
 

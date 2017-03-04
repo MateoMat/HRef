@@ -18,18 +18,13 @@ use href\hrefBundle\Entity\Structure;
 class User extends BaseUser
 {
     /**
-     * @ORM\Id
-     * @ORM\Column(type="integer", nullable=false)
-     * @var integer
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * 
+     * @ORM\Column(name="structure")
+     * @ORM\ManyToOne(targetEntity="Structure", inversedBy="user")
+     * @ORM\JoinColumn(name="structure", referencedColumnName="id")
+     * 
      */
-    protected $id;
-
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
+    protected $structure;
     
     /**
      * @ORM\ManyToMany(targetEntity="Group")
@@ -40,7 +35,16 @@ class User extends BaseUser
      */
     protected $groups;
     
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer", nullable=false)
+     * @var integer
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+
     
+
     
     /**
      * 
@@ -49,21 +53,9 @@ class User extends BaseUser
      */
     protected $position;
     
-    /**
-     * 
-     * @ORM\Column(name="structure")
-     * @ORM\ManyToOne(targetEntity="Structure", inversedBy="user")
-     * @ORM\JoinColumn(name="structure_id", referencedColumnName="id")
-     * 
-     */
-    protected $structure;
     
-    /**
-     * 
-     * @ORM\Column(type="integer")
-     *
-     */
-    protected $parent;
+    
+
     
     /**
      * 
@@ -73,7 +65,11 @@ class User extends BaseUser
     protected $promoLine;
     
     
-    
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
     
 
     /**

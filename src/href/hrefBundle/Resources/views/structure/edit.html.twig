@@ -1,21 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Structure edit</h1>
+{% block stylesheets %}
+    {{ parent() }}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('structure_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <link href="{{ asset('bundles/framework/css/editStructure.css') }}" rel="stylesheet">
 {% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1>Structure edit</h1>
+
+        <div class="form-horizontal">
+            <div class="form form-group col-sm-2">
+                
+                {{ form_start(edit_form) }}
+
+                {{ form_label(edit_form.symbol) }}
+                {{ form_widget(edit_form.symbol,{'attr':{'class':'form-control'} }) }}
+
+                {{ form_label(edit_form.position) }}
+                {{ form_widget(edit_form.position,{'attr':{'class':'form-control'} }) }}
+
+                {{ form_label(edit_form.superior_id) }}
+                {{ form_widget(edit_form.superior_id,{'attr':{'class':'form-control'} }) }}
+
+
+
+
+                {{ form_label(edit_form.level) }}
+                {{ form_widget(edit_form.level,{'attr':{'class':'form-control'} }) }}
+
+
+                {{ form_label(edit_form.promoLine) }}
+                {{ form_widget(edit_form.promoLine,{'attr':{'class':'form-control'} }) }}
+
+                {{ form_label(edit_form.user) }}
+                {{ form_widget(edit_form.user,{'attr':{'class':'form-control'} }) }}
+
+
+
+
+                <br>
+
+                {{ form_end(edit_form) }}
+
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Zapisz" class="btn btn-primary"/>
+                <button class="btn btn-warning"><a href="{{ path('structure_index') }}">Wróć na listę</a></button>
+
+
+                <input type="submit" value="Usuń" class="btn btn-danger">
+                
+                {{ form_end(delete_form) }}
+
+
+            </div>
+        {% endblock %}

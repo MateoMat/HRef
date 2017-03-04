@@ -5,6 +5,8 @@ namespace href\hrefBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 class StructureType extends AbstractType
 {
@@ -13,7 +15,7 @@ class StructureType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('symbol')->add('level')->add('superior_id')->add('promoLine')->add('position')        ;
+        $builder->add('symbol')->add('level')->add('superior_id',TextType::class,array('disabled'=>true))->add('promoLine')->add('position')->add('user')        ;
     }
     
     /**

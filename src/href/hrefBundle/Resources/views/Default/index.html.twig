@@ -8,20 +8,21 @@
         <table class="table table-bordered">
             <tr style="background-color: lightgray;color:white">
                 {% for i in structure %}
+                    {#{{ dump(i.user) }}#}
                     {% if i.level == 1 %}
                         {% if i.user != null %}
                             {% for j in user %}
-                                {% if i.user == j.id %}
+
                                     <td style="text-align: center;" colspan="4"><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br>
                                         {{ j.id }} {{ j.username }} <br> {{ j.email }}</td>
-                                    {% endif %}
+
                                 {% endfor %}
                             {% endif %}
                             {% if i.user == null %}
                             <td style="text-align: center;" colspan="4"><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br>
                                 <p>Wakat</p></td>
-                            {% endif %}                        
-                        {% endif %}              
+                            {% endif %}
+                        {% endif %}
                     {%endfor %}
             </tr>
             <tr>
@@ -34,17 +35,17 @@
                     {% if i.level == 2 %}
                         {% if i.user != null %}
                             {% for j in user %}
-                                {% if i.user == j.id %}
+
                                     <td style="text-align: center;" colspan="4"><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br>
                                         {{ j.id }} {{ j.username }} <br> {{ j.email }}</td>
-                                    {% endif %}
+
                                 {% endfor %}
                             {% endif %}
                             {% if i.user == null %}
                             <td style="text-align: center;" colspan="4"><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br>
                                 <p>Wakat</p></td>
-                            {% endif %}                        
-                        {% endif %}              
+                            {% endif %}
+                        {% endif %}
                     {%endfor %}
             </tr>
 
@@ -61,17 +62,17 @@
                     {% if i.level == 3 %}
                         {% if i.user != null %}
                             {% for j in user %}
-                                {% if i.user == j.id %}
+
                                     <td style="text-align: center;" colspan="4"><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br>
                                         {{ j.id }} {{ j.username }} <br> {{ j.email }}</td>
-                                    {% endif %}
+
                                 {% endfor %}
                             {% endif %}
                             {% if i.user == null %}
                             <td style="text-align: center;" colspan="4"><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br>
                                 <p>Wakat</p></td>
-                            {% endif %}                        
-                        {% endif %}              
+                            {% endif %}
+                        {% endif %}
                     {%endfor %}
             </tr>
 
@@ -115,11 +116,11 @@
                     {% if i.level == 4 %}
                         {% if i.user != null %}
                             {% for j in user %}
-                                {% if i.user == j.id %}
+
 
                                     <td style="text-align: center;"><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br>
                                         {{ j.id }} {{ j.username }} <br> {{ j.email }}</td>
-                                    {% endif %}
+
                                 {% endfor %}
                             {% endif %}
                             {% if i.user == null %}
@@ -129,7 +130,7 @@
                         {% endif %}              
                     {%endfor %}
             </tr>
-            </tr>
+
             <tr>
                 <td style="text-align: center;">
                     <span class="glyphicon glyphicon-arrow-down"></span>
@@ -150,9 +151,9 @@
                         {% for i in structure %}               
                             {% if i.level == 5 and i.superiorId == 4 %}
                                 {% for j in user %}
-                                    {% if i.user == j.id %}
+
                                         <tr style="background-color: lightgray;color:white"><td><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br> {{ j.email }}</td></tr>
-                                {% endif %}
+
                                     {%endfor %}
                             {% endif %}
                         {%endfor %}
@@ -163,9 +164,9 @@
                         {% for i in structure %}               
                             {% if i.level == 5 and i.superiorId == 5 %}
                                 {% for j in user %}
-                                    {% if i.user == j.id %}
+
                                         <tr style="background-color: lightgray;color:white"><td><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br> {{ j.email }}</td></tr>
-                                {% endif %}
+
                                     {%endfor %}
                             {% endif %}
                         {%endfor %}
@@ -176,9 +177,9 @@
                         {% for i in structure %}               
                             {% if i.level == 5 and i.superiorId == 6 %}
                                 {% for j in user %}
-                                    {% if i.user == j.id %}
+
                                         <tr style="background-color: lightgray;color:white"><td><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a><br> {{ j.email }}</td></tr>
-                                {% endif %}
+
                                     {%endfor %}
                             {% endif %}
                         {%endfor %}
@@ -189,9 +190,9 @@
                         {% for i in structure %}               
                             {% if i.level == 5 and i.superiorId == 7 %}
                                 {% for j in user %}
-                                    {% if i.user == j.id %}
+
                                     <tr style="background-color: lightgray;color:white"><td><a href="/structure/{{ i.id }}">{{ i.position }} {{ i.symbol }}</a> {{ j.email }}</td></tr>
-                                {% endif %}
+
                                     {%endfor %}
                             {% endif %}
                         {%endfor %}

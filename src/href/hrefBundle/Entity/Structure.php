@@ -16,6 +16,23 @@ use href\hrefBundle\Entity\User;
 class Structure {
 
     /**
+     * @ORM\ManyToMany(targetEntity="User")
+     * @ORM\JoinTable(name="user_structures",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="structure_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    private $user;
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -59,12 +76,7 @@ class Structure {
      */
     private $position;
 
-    /**
-     * @var string
-     * @ORM\Column(name="user", type="integer")
-     * @ORM\OneToMany(targetEntity="User", mappedBy="structure")
-     */
-    private $user;
+    
 
     public function __construct() {
         $this->user = new ArrayCollection();
@@ -211,76 +223,16 @@ class Structure {
         return $this->superior_id;
     }
 
-
     /**
-     * Set userId
-     *
-     * @param integer $userId
-     *
-     * @return Structure
-     */
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
-    /**
-     * Get userId
-     *
-     * @return integer
-     */
-    public function getUserId()
-    {
-        return $this->userId;
-    }
-
-    /**
-     * Set users
-     *
-     * @param integer $users
-     *
-     * @return Structure
-     */
-    public function setUsers($users)
-    {
-        $this->users = $users;
-
-        return $this;
-    }
-
-    /**
-     * Get users
-     *
-     * @return integer
-     */
-    public function getUsers()
-    {
-        return $this->users;
-    }
-
-    /**
-     * Set user
-     *
-     * @param integer $user
-     *
-     * @return Structure
+     * @param mixed $user
      */
     public function setUser($user)
     {
-        $this->user = $user;
-
-        return $this;
+        $this->user[] = $user;
     }
 
-    /**
-     * Get user
-     *
-     * @return integer
-     */
-    public function getUser()
+    public function __toString()
     {
-        return $this->user;
+        return (string) $this->id;
     }
 }

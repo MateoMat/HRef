@@ -26,7 +26,7 @@ class StructureController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $structures = $em->getRepository('hrefBundle:Structure')->findAll();
-
+        
         return $this->render('hrefBundle:structure:index.html.twig', array(
             'structures' => $structures,
         ));
